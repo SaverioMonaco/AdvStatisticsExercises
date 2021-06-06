@@ -1,0 +1,11 @@
+model
+    {
+        # data likelihood
+        X ~ dpois(lambda);
+        
+        # a unifrom prior for lambda
+        lambda ~ dexp(0.00001);
+        
+        # Predicted data, given lambda
+        Y ~ dpois(lambda);
+    }

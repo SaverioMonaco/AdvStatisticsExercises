@@ -1,0 +1,14 @@
+model
+    {
+        # data likelihood
+        for(i in 1:length(X))
+            {
+                X[i] ~ dbern(p);
+            }
+        
+        # a unifrom prior for p
+        p ~ dbeta(1, 1);
+        
+        # Predicted data, given p
+        y ~ dbin(p, n_next);
+    }

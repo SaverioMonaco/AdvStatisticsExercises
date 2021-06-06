@@ -1,0 +1,16 @@
+model
+    {
+        # data likelihood
+        for(i in 1:length(X))
+            {
+                X[i] ~ dnorm(mu, tau);
+            }
+        
+        mu ~ dnorm(0.0, 1.0E-6);
+        tau ~ dgamma(1.0, 1.0E-4);
+        sigma <- 1.0/sqrt(tau);
+        
+        
+        # Future observation
+        Y ~ dnorm(mu, tau)
+    }
